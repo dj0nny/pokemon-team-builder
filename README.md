@@ -31,7 +31,7 @@ I will use GitHub Projects
 
 ### How often will you commit your code?
 
-Every day, if possible
+Every day, if possible.
 
 ### How will you test your web site?
 
