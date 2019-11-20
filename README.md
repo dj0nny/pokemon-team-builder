@@ -1,23 +1,42 @@
-Project Name / Title
-Give your project a good name like: MyPantry or BestNews instead of project-01
+# Pokemon Team Builder
 
-2 - 3 Sentence Project Description (Elevator Pitch)
-In 2 to 3 sentences, describe what your project is, how people will use it
+## Project Description
 
-What is your motivation for creating this project?
-Enter your motivation for this project
+The purpose of this project is to develop a team builder for Pokèmon games.
 
-How will users interact with your web site?
-Describe the user interaction involved, e.g. search form, settings check boxes, a series of steps to get some results etc.
+The available Pokémon will go from the 1st to the 7th generation (Excluding the 8th generation as it came out on November 15th 2019)
 
-What 3rd Party API(s) will you integrate with?
-Link to the API documentation here
-Tech Stack
-CSS Framework you will use - or no framework
-Any 3rd party JS libraries like maps, data viz etc.
-Will you try to implement any stretch features?
-What will be your process?
-What project management tool will you use?
-How often will you commit your code?
-How will you test your web site?
-How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
+## What is your motivation for creating this project?
+
+I'm a Pokèmon player since I was a child. One of the most fun parts of Pokèmon games is composing your own team for adventure or competition.
+
+I also want to test my knowledge by building something of my own.
+
+## How will users interact with your web site?
+
+The user will be able to create teams in which to add their own Pokemon, with a maximum of 6 Pokémon per team. You can also save your favorite teams.
+
+## What 3rd Party API(s) will you integrate with?
+
+* [PokéAPI](https://pokeapi.co/) - The RESTful Pokémon API
+
+## Tech Stack
+
+* [Foundation](http://foundation.zurb.com/) (XY Grids only for basic responsive design)
+* Local Storage for saving the favorite teams
+
+### What project management tool will you use?
+
+I will use GitHub Projects
+
+### How often will you commit your code?
+
+Every day, if possible
+
+### How will you test your web site?
+
+For now I don't use any test frameworks and I will test it by myself. I will offer my friends the possibility of using it to gather feedback or to let me know about any bugs present.
+
+### How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
+
+Design's layout will be drawn on paper and uploaded once finished in this repository.
