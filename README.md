@@ -4,7 +4,7 @@
 
 The purpose of this project is to develop a team builder for Pokèmon games.
 
-The available Pokémon will go from the 1st to the 7th generation (Excluding the 8th generation as it came out on November 15th 2019)
+The available Pokémon will go from the 1st to the 7th generation (excluding the 8th generation as it came out on November 15th 2019)
 
 ## What is your motivation for creating this project?
 
@@ -39,4 +39,4 @@ For now I don't use any test frameworks and I will test it by myself. I will off
 
 ### How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
 
-Design's layout will be drawn on paper and uploaded once finished in this repository.
+Design's layout will be drawn on paper and uploaded in this repository once finished.
