@@ -9,7 +9,77 @@
   <title>Pokèmon Team Builder</title>
 </head>
 <body>
-  <h1>Team builder</h1>
+  <!-- Start of title section -->
+  <div id="title">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-12">
+          <h1>Pokèmon Team Builder</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of title section -->
+
+  <div class="clearfix"></div>
+
+  <div id="controls">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-6">
+          <button class="primary" id="new-team">Add Team</button>
+        </div>
+        <div class="cell medium-6">
+          <button class="primary" id="add-pokemon">Add Pokèmon</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start of add pokèmon -->
+  <!-- <div id="add-pokemon">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x">
+        <div class="cell medium-12">
+          <input type="text" id="pokemon-name">
+          <button id="submit-pkmn">Add pokemon</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- End of add pokèmon -->
+
+  <!-- Start of add pokèmon -->
+  <div id="team-container"></div>
+  <!-- End of add pokèmon -->
+
+  <!-- Modals -->
+
+  <div id="newTeamModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="add-team">
+        <input type="text" id="team-name">
+        <button class="primary" id="create-team">Create Team</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div id="addPokemon" class="modal">
+    <div class="modal-content">
+      <span class="close-2">&times;</span>
+      <form id="add-pokemon-team">
+        <input type="text" id="pkmn-name">
+        <select id="team-list"></select>
+        <button class="primary" id="add-pkmn">Add pokemon</button>
+      </form>
+    </div>
+  </div>
+
+
   <script src="./js/custom.js"></script>
 </body>
 </html>

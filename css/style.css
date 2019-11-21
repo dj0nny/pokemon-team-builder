@@ -55,8 +55,136 @@ div#links a[target="_blank"]:hover {
   background: transparent;
 }
 
+
+/****************** Team Builder ******************/
+
+div#add-pokemon {
+  margin-top: 40px;
+}
+
+input#pokemon-name {
+  width: 300px;
+  margin-right: 20px;
+}
+
+button#submit-pkmn {
+  background: #ef5350;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+span.empty {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+div#controls {
+  margin: 50px 0;
+}
+
+.primary {
+  width: 305px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  transition: .3s all;
+  color: #fff;
+  background: #ef5350;
+  border: 1px solid #ef5350;
+  cursor: pointer;
+}
+
+.primary:focus {
+  border: 1px solid #ef5350;
+}
+
+.primary:hover {
+  text-decoration: underline;
+  background: transparent;
+  color: #ef5350;
+}
+
+/****************** Modals ******************/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 7% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.close, .close-2 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close-2:hover,
+.close-2:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input#team-name {
+  padding: 2px;
+  width: 265px;
+  margin-right: 18px;
+}
+
+input#pkmn-name {
+  width: 45%;
+}
+
+select#team-list {
+  width: 45%;
+  padding: 2px;
+}
+
+button#add-pkmn {
+  margin-top: 30px;
+}
+
+/****************** Mobile ******************/
+
 @media screen and (max-width: 767px) {
   div#links .cell:first-child a {
     margin-bottom: 10px;
+  }
+}
+
+/****************** Animations ******************/
+
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
   }
 }
