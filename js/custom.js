@@ -1,3 +1,6 @@
+// eliminare team e pokemon dai team
+// gestione user friendly degli errori
+
 const newTeamModal = document.getElementById('newTeamModal');
 const addPokemonModal = document.getElementById('addPokemon');
 
@@ -34,12 +37,56 @@ const initializeTeams = () => {
   }
 }
 
+const initializePokemon = (index, team) => {
+  if (team.length != 0) {
+    team.forEach((element) => {
+      document.getElementById(`team-${index}`).insertAdjacentHTML('beforeend',
+        `
+        <div class="grid-x">
+          <img src="${element.sprites.front_default}"  class="sprite" />
+          <div class="cell medium-12">
+            <div class="grid-container">
+              <div class="grid-x grid-margin-x">
+                <div class="cell medium-6">
+                  <h3>General Info</h3>
+                  <div class="info-list">
+                    <span class="info"><strong>Name: </strong>${element.name}</span>
+                    <span class="info"><strong>Pokèdex ID: </strong>${element.id}</span>
+                    <span class="info"><strong>Type: </strong>${element.types[0].type.name}  ${element.types[1] != undefined ? '/ ' + element.types[1].type.name : ''}</span>
+                    <span class="info"><strong>Ability 1: </strong>${element.abilities[0].is_hidden != true ? element.abilities[0].ability.name : element.abilities[1].ability.name}</span>
+                    <span class="info"><strong>Ability 2: </strong>${element.abilities.length === 3 ? element.abilities[2].ability.name : '-'}</span>
+                    <span class="info"><strong>Hidden Ability: </strong>${element.abilities[0].is_hidden === true ? element.abilities[0].ability.name : '-'}</span>
+                  </div>
+                </div>
+                <div class="cell medium-6">
+                  <h3>Base stats</h3>
+                  <div class="stats-list">
+                    <span class="info"><strong>HP: </strong>${element.stats[5].base_stat}</span>
+                    <span class="info"><strong>Attack: </strong>${element.stats[4].base_stat}</span>
+                    <span class="info"><strong>Defense: </strong>${element.stats[3].base_stat}</span>
+                    <span class="info"><strong>Special Attack: </strong>${element.stats[2].base_stat}</span>
+                    <span class="info"><strong>Special Defense: </strong>${element.stats[1].base_stat}</span>
+                    <span class="info"><strong>Speed: </strong>${element.stats[0].base_stat}</span>                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `
+      )
+    });
+    console.log(team);
+  }
+}
+
 const initializeTeamList = () => {
   for (let i = 0; i < localStorage.length; i++) {
     const element = localStorage.key(i);
+    const currentTeam = JSON.parse(localStorage.getItem(element));
     document.getElementById('team-container').insertAdjacentHTML('beforeend',
       `
-        <div class="grid-container full" id="team-${i}">
+        <div class="grid-container" id="team-${i}">
           <div class="grid-x">
             <div class="cell medium-12">
               <h2>${element}</h2>
@@ -48,8 +95,7 @@ const initializeTeamList = () => {
         </div>
       `
     );
-    // const team = localStorage.getItem(element);
-    console.log(JSON.parse(localStorage.getItem(element)));
+    initializePokemon(i, currentTeam);
   }
 }
 
@@ -64,7 +110,7 @@ const addTeam = (teamName) => {
 const updateTeamList = (teamName) => {
   document.getElementById('team-container').insertAdjacentHTML('beforeend',
     `
-    <div class="grid-container full" id="team-${localStorage.length}">
+    <div class="grid-container" id="team-${localStorage.length}">
       <div class="grid-x">
         <div class="cell medium-12">
           <h2>${teamName}</h2>
@@ -101,38 +147,20 @@ document.getElementById('add-team').addEventListener('submit', (event) => {
   }
 });
 
-// document.getElementById('submit-pkmn').addEventListener('click', async () => {
-//   const pkmn = document.getElementById('pokemon-name').value;
-//   if (pkmn === '') {
-//     alert('Input cannot be empty');
-//   } else {
-//       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmn}`);
-//       const json = await response.json();
-//       console.log(json)
-
-//     // let xhttp = new XMLHttpRequest();
-//     // xhttp.onreadystatechange = function() {
-//     //   if (this.readyState == 4 && this.status == 200) {
-//     //     const parsedResponse = JSON.parse(this.responseText)
-//     //     document.getElementById('team-container').insertAdjacentHTML('beforeend',
-//     //       `
-//     //       <div class="grid-container">
-//     //         <div class="grid-x grid-margin-x">
-//     //           <div class="cell medium-4">
-//     //             <img src="${parsedResponse.sprites.front_default}" class="sprite" />
-//     //           </div>
-//     //           <div class="cell medium-8">
-//     //             info
-//     //           </div>
-//     //         </div>
-//     //       </div>
-//     //       `
-//     //     );
-//     //     team.push(parsedResponse);
-//     //     localStorage.setItem('pokemonTeam', JSON.stringify(team));
-//     //   }
-//     // }
-//     // xhttp.open("GET", `https://pokeapi.co/api/v2/pokemon/${pkmn}`, true);
-//     // xhttp.send();
-//   }
-// });
+document.getElementById('add-new-pokemon').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const pkmn = document.getElementById('pkmn-name').value;
+  const teamIndex = document.getElementById('team-list').value;
+  if (pkmn === '') {
+    alert('name cannot be empty');
+  } else {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmn}`);
+    const json = await response.json();
+    const selectedTeam = JSON.parse(localStorage.getItem(localStorage.key(teamIndex)));
+    selectedTeam.push(json);
+    localStorage.setItem(localStorage.key(teamIndex), JSON.stringify(selectedTeam));
+    addPokemonModal.style.display = 'none';
+    // check che ci siano meno di 6 membri per team 
+    // funzione che aggiunge un nuovo blocco al momento del submit (passando pokemon e id del team)
+  }
+});

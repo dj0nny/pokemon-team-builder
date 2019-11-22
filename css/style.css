@@ -7,6 +7,10 @@ body {
   color: #263238;
 }
 
+h3 {
+  margin: 0;
+}
+
 div#title {
   color: #fff;
   background-color: #ef5350;
@@ -55,6 +59,25 @@ div#links a[target="_blank"]:hover {
   background: transparent;
 }
 
+.info-list,
+.stats-list {
+  margin-top: 20px;
+  margin-bottom: 21px;
+}
+
+div#team-container h2 {
+  color: #ef5350;
+  font-size: 40px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+}
+
+img.sprite {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 155px;
+}
 
 /****************** Team Builder ******************/
 
@@ -164,6 +187,12 @@ select#team-list {
 
 button#add-pkmn {
   margin-top: 30px;
+}
+
+span.info {
+  display: block;
+  text-transform: capitalize;
+  text-align: left;
 }
 
 /****************** Mobile ******************/
