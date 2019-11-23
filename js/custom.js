@@ -161,8 +161,6 @@ const appendNewPokèmon = (teamIndex, pokèmon) => {
 }
 
 window.addEventListener('load', () => {
-  const pkmnLocalStorage = localStorage.getItem('pokemonTeam');
-  console.log(localStorage.length);
   if (localStorage.length === 0) {
     document.getElementById('team-container').insertAdjacentHTML('beforeend', 
       `<span class="empty">No teams added yet</span>`
