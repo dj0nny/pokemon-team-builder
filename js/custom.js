@@ -179,10 +179,31 @@ document.getElementById('add-team').addEventListener('submit', (event) => {
   } else {
     localStorage.setItem(name, JSON.stringify([]));
     newTeamModal.style.display = 'none';
+    document.getElementById('team-name').value = '';
     addTeam(name);
     updateTeamList(name);
   }
 });
+
+// document.getElementById('pkmn-name').addEventListener('input', async () => {
+//   const name = document.getElementById('pkmn-name').value.toLowerCase();
+//   const res = await fetch('../db/pokèmon.json');
+//   const pokemonlist = await res.json();
+  
+//   let options = pokemonlist.filter(pkmn => {
+//     const regex = new RegExp(`^${name}`, 'gi');
+//     return pkmn.name.match(regex);
+//   });
+
+//   const html = options.map(option =>
+//     `
+//       <div class="suggest">${option.name}</div>
+//     `
+//   ).join('');
+
+//    document.getElementById('pkmn-name').insertAdjacentHTML('beforeend', html);
+
+// });
 
 document.getElementById('add-new-pokemon').addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -201,6 +222,7 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
       selectedTeam.push(json);
       localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(selectedTeam));
       appendNewPokèmon(teamName, json);
+      document.getElementById('pkmn-name').value = '';
       addPokemonModal.style.display = 'none';
     }
   }

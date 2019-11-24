@@ -159,6 +159,9 @@ div#controls {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: relative;
+  bottom: 20px;
+  left: 5px;
 }
 
 .close:hover,
