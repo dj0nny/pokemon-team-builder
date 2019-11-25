@@ -88,6 +88,7 @@ const initializeTeamList = () => {
     document.getElementById('team-container').insertAdjacentHTML('beforeend',
       `
         <div class="grid-container" id="${teamID}">
+          <span class="delete" onclick="deleteTeam('${teamID}')">&times;</span>
           <div class="grid-x">
             <div class="cell medium-12">
               <h2>${element}</h2>
@@ -112,6 +113,7 @@ const updateTeamList = (teamName) => {
   document.getElementById('team-container').insertAdjacentHTML('beforeend',
     `
       <div class="grid-container" id="${teamName.split(' ').join('-')}">
+        <span class="delete" onclick="deleteTeam('${teamName.split(' ').join('-')}')">&times;</span>
         <div class="grid-x">
           <div class="cell medium-12">
             <h2>${teamName}</h2>
@@ -227,3 +229,9 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
     }
   }
 });
+
+const deleteTeam = (team) => {
+  localStorage.removeItem(team.split('-').join(' '));
+  const deletedTeam = document.getElementById(team);
+  deletedTeam.parentNode.removeChild(deletedTeam);
+}

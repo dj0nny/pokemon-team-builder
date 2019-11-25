@@ -129,6 +129,14 @@ div#controls {
   color: #ef5350;
 }
 
+span.delete {
+  font-size: 45px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  float: right;
+  right: 26px;
+}
 /****************** Modals ******************/
 
 .modal {
