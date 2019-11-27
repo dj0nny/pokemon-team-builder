@@ -14,7 +14,7 @@ I also want to test my knowledge by building something of my own.
 
 ## How will users interact with your web site?
 
-The user will be able to create teams in which to add their own Pokemon, with a maximum of 6 Pokémon per team. You can also save your favorite teams.
+The user will be able to create teams in which to add their own Pokemon, with a maximum of 6 Pokémon per team.
 
 ## What 3rd Party API(s) will you integrate with?
 
@@ -23,7 +23,7 @@ The user will be able to create teams in which to add their own Pokemon, with a 
 ## Tech Stack
 
 * [Foundation](http://foundation.zurb.com/) (XY Grids only for basic responsive design)
-* Local Storage for saving the favorite teams
+* Local Storage for saving the teams
 
 ### What project management tool will you use?
 
