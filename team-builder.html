@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/foundation.min.css">
+  <link rel="stylesheet" href="./css/autoComplete.css">
   <link rel="stylesheet" href="./css/style.css">
   <title>Pokèmon Team Builder</title>
 </head>
@@ -37,19 +38,6 @@
   </div>
 
   <!-- Start of add pokèmon -->
-  <!-- <div id="add-pokemon">
-    <div class="grid-container">
-      <div class="grid-x grid-margin-x">
-        <div class="cell medium-12">
-          <input type="text" id="pokemon-name">
-          <button id="submit-pkmn">Add pokemon</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- End of add pokèmon -->
-
-  <!-- Start of add pokèmon -->
   <div id="team-container"></div>
   <!-- End of add pokèmon -->
 
@@ -72,13 +60,14 @@
     <div class="modal-content">
       <span class="close-2">&times;</span>
       <form id="add-new-pokemon">
-        <input type="text" id="pkmn-name">
+        <input id="autoComplete" type="text" tabindex="1">
         <select id="team-list"></select>
         <button class="primary" id="add-pkmn">Add pokemon</button>
       </form>
     </div>
   </div>
     
+  <script src="./js/autoComplete.min.js"></script>
   <script src="./js/custom.js"></script>
 </body>
 </html>

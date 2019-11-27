@@ -1,0 +1,102 @@
+#autoComplete_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#autoComplete {
+  position: relative;
+  padding: 12px;
+  height: 2.1rem;
+  width: 270px;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 50rem;
+  border: 0.05rem solid #ef5350;
+  caret-color: rgb(255, 122, 122);
+  color: #263238;
+}
+
+#autoComplete::selection {
+  color: transparent;
+}
+
+#autoComplete:focus::selection {
+  color: #fff;
+  background-color: rgba(255, 122, 122, 1);
+}
+
+#autoComplete_list {
+  position: fixed;
+  z-index: 1000;
+  padding: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  margin-left: 30%;
+  margin-right: auto;
+  width: 250px;
+  transition: all 0.1s ease-in-out;
+  -webkit-transition: all -webkit-transform 0.1s ease;
+}
+
+.autoComplete_result {
+  margin: 0 auto;
+  padding: 0.6rem;
+  max-width: 280px;
+  border: 0.05rem solid #e3e3e3;
+  list-style: none;
+  text-align: left;
+  font-size: 1.1rem;
+  color: rgb(123, 123, 123);
+  transition: all 0.1s ease-in-out;
+  background-color: #fff;
+}
+
+.autoComplete_result::selection {
+  color: rgba(#ffffff, 0);
+  background-color: rgba(#ffffff, 0);
+}
+
+.autoComplete_result:last-child {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.autoComplete_result:hover {
+  cursor: pointer;
+  border-left: 2px solid rgba(255, 122, 122, 1);
+  border-right: 2px solid rgba(255, 122, 122, 1);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.autoComplete_result:focus {
+  outline: none;
+  background-color: rgba(255, 248, 248, 0.9);
+  border-left: 2px solid rgba(255, 122, 122, 1);
+  border-right: 2px solid rgba(255, 122, 122, 1);
+}
+
+.autoComplete_highlighted {
+  opacity: 1;
+  color: rgba(255, 122, 122, 1);
+  font-weight: bold;
+}
+
+.autoComplete_highlighted::selection {
+  color: rgba(#ffffff, 0);
+  background-color: rgba(#ffffff, 0);
+}
+
+.autoComplete_selected {
+  cursor: pointer;
+  background-color: rgba(255, 248, 248, 0.9);
+  border-left: 2px solid rgba(255, 122, 122, 1);
+  border-right: 2px solid rgba(255, 122, 122, 1);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+li.no_result {
+  list-style-type: none;
+  font-weight: bold;
+}

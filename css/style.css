@@ -182,9 +182,11 @@ span.delete {
 }
 
 input#team-name {
-  padding: 2px;
   width: 265px;
   margin-right: 18px;
+  padding: 9px;
+  border: 1px solid #ef5350;
+  border-radius: 50px;
 }
 
 input#pkmn-name {
@@ -193,7 +195,15 @@ input#pkmn-name {
 
 select#team-list {
   width: 45%;
-  padding: 2px;
+  padding: 9px;
+  border: 1px solid #ef5350;
+  border-radius: 50px;
+  margin-left: 15px;
+}
+
+input#team-name:focus,
+select#team-list:focus {
+  outline-width: 0;
 }
 
 button#add-pkmn {
@@ -208,9 +218,38 @@ span.info {
 
 /****************** Mobile ******************/
 
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 767px) {
   div#links .cell:first-child a {
     margin-bottom: 10px;
+  }
+  
+  #autoComplete {
+    width: 100%;
+  }
+
+  select#team-list {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #autoComplete_list {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  span.info {
+    text-align: center;
+  }
+
+  .primary,
+  select#team-list {
+    margin-top: 20px;
   }
 }
 

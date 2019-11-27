@@ -27,6 +27,60 @@ closeSpan2.onclick = () => {
   addPokemonModal.style.display = 'none';
 }
 
+const autoCompletejs = new autoComplete({
+  data: {
+    src: async function () {
+      const source = await fetch("../db/pokèmon.json");
+      const data = await source.json();
+      return data;
+    },
+    key: ["name"],
+  },
+  sort: function (a, b) {
+    if (a.match < b.match) {
+      return -1;
+    }
+    if (a.match > b.match) {
+      return 1;
+    }
+    return 0;
+  },
+  selector: "#autoComplete",
+  debounce: 0,
+  searchEngine: "strict",
+  highlight: true,
+  maxResults: 5,
+  resultsList: {
+    render: true,
+    container: function (source) {
+      source.setAttribute("id", "autoComplete_list");
+    },
+    element: "ul",
+    destination: document.querySelector("#autoComplete"),
+    position: "afterend",
+  },
+  resultItem: {
+    content: function (data, source) {
+      source.innerHTML = data.match;
+    },
+    element: "li",
+  },
+  noResults: function () {
+    const result = document.createElement("li");
+    result.setAttribute("class", "no_result");
+    result.setAttribute("tabindex", "1");
+    result.innerHTML = "No Results";
+    document.querySelector("#autoComplete_list").appendChild(result);
+  },
+  onSelection: function (feedback) {
+    document.querySelector("#autoComplete").blur();
+    const selection = feedback.selection.value.name;
+    document.querySelector("#autoComplete").innerHTML = selection;
+    document.querySelector("#autoComplete").value = "";
+    console.log(feedback);
+  },
+});
+
 const initializeTeams = () => {
   const select = document.getElementById('team-list');
   for (let i = 0; i < localStorage.length; i++) {
@@ -187,31 +241,10 @@ document.getElementById('add-team').addEventListener('submit', (event) => {
   }
 });
 
-// document.getElementById('pkmn-name').addEventListener('input', async () => {
-//   const name = document.getElementById('pkmn-name').value.toLowerCase();
-//   const res = await fetch('../db/pokèmon.json');
-//   const pokemonlist = await res.json();
-  
-//   let options = pokemonlist.filter(pkmn => {
-//     const regex = new RegExp(`^${name}`, 'gi');
-//     return pkmn.name.match(regex);
-//   });
-
-//   const html = options.map(option =>
-//     `
-//       <div class="suggest">${option.name}</div>
-//     `
-//   ).join('');
-
-//    document.getElementById('pkmn-name').insertAdjacentHTML('beforeend', html);
-
-// });
-
 document.getElementById('add-new-pokemon').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const pkmn = document.getElementById('pkmn-name').value.toLowerCase();
+  const pkmn = document.getElementById('autoComplete').textContent.toLowerCase();
   const teamName = document.getElementById('team-list').value;
-  console.log(teamName);
   if (pkmn === '') {
     alert('Name cannot be empty');
   } else {
@@ -224,7 +257,7 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
       selectedTeam.push(json);
       localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(selectedTeam));
       appendNewPokèmon(teamName, json);
-      document.getElementById('pkmn-name').value = '';
+      document.getElementById('autoComplete').value = '';
       addPokemonModal.style.display = 'none';
     }
   }
