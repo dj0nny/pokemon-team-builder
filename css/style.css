@@ -221,6 +221,24 @@ span.info {
   text-align: left;
 }
 
+div#footer {
+  margin-top: 75px;
+  background: #ef5350;
+  color: #fff;
+  padding: 35px;
+  font-size: 20px;
+}
+
+div#footer a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+div#footer a:hover {
+  text-decoration: underline;
+}
+
 /****************** Mobile ******************/
 
 @media screen and (max-width: 768px) {
