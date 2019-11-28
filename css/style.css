@@ -90,6 +90,11 @@ input#pokemon-name {
   margin-right: 20px;
 }
 
+button#add-pokemon:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 button#submit-pkmn {
   background: #ef5350;
   padding: 10px 20px;

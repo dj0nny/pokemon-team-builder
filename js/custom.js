@@ -11,21 +11,21 @@ const closeSpan = document.getElementsByClassName('close')[0];
 const closeSpan2 = document.getElementsByClassName('close-2')[0];
 
 
-newTeamModalOpenBtn.onclick = () => {
+newTeamModalOpenBtn.addEventListener('click', () => {
   newTeamModal.style.display = 'block';
-}
+});
 
-addPokemonOpenBtn.onclick = () => {
+addPokemonOpenBtn.addEventListener('click', () => {
   addPokemonModal.style.display = 'block';
-}
+});
 
-closeSpan.onclick = () => {
+closeSpan.addEventListener('click', () => {
   newTeamModal.style.display = 'none';
-}
+});
 
-closeSpan2.onclick = () => {
+closeSpan2.addEventListener('click', () => {
   addPokemonModal.style.display = 'none';
-}
+});
 
 const autoCompletejs = new autoComplete({
   data: {
@@ -76,6 +76,7 @@ const autoCompletejs = new autoComplete({
     document.querySelector("#autoComplete").blur();
     const selection = feedback.selection.value.name;
     document.querySelector("#autoComplete").innerHTML = selection;
+    document.querySelector("#autoComplete").setAttribute("placeholder", selection);
     document.querySelector("#autoComplete").value = "";
     console.log(feedback);
   },
@@ -191,7 +192,7 @@ const appendNewPokèmon = (teamIndex, pokèmon) => {
                 <div class="info-list">
                   <span class="info"><strong>Name: </strong>${pokèmon.name}</span>
                   <span class="info"><strong>Pokèdex ID: </strong>${pokèmon.id}</span>
-                  <span class="info"><strong>Type: </strong>${pokèmon.types[0].type.name}  ${pokèmon.types[1] != undefined ? '/ ' + pokèmon.types[1].type.name : ''}</span>
+                  <span class="info"><strong>Type: </strong>${pokèmon.types[0].type.name} ${pokèmon.types[1] != undefined ? '/ ' + pokèmon.types[1].type.name : ''}</span>
                   <span class="info"><strong>Ability 1: </strong>${pokèmon.abilities[0].is_hidden != true ? pokèmon.abilities[0].ability.name : pokèmon.abilities[1].ability.name}</span>
                   <span class="info"><strong>Ability 2: </strong>${pokèmon.abilities.length === 3 ? pokèmon.abilities[2].ability.name : '-'}</span>
                   <span class="info"><strong>Hidden Ability: </strong>${pokèmon.abilities[0].is_hidden === true ? pokèmon.abilities[0].ability.name : '-'}</span>
@@ -221,6 +222,7 @@ window.addEventListener('load', () => {
     document.getElementById('team-container').insertAdjacentHTML('beforeend', 
       `<span class="empty">No teams added yet</span>`
     );
+    document.getElementById('add-pokemon').disabled = true;
   } else {
     initializeTeams();
     initializeTeamList();
@@ -231,9 +233,13 @@ document.getElementById('add-team').addEventListener('submit', (event) => {
   event.preventDefault();
   const name = document.getElementById('team-name').value;
   if (name === '' ) {
-    alert('name cannot be empty');
+    alert("Team's name cannot be empty");
   } else {
     localStorage.setItem(name, JSON.stringify([]));
+    if (localStorage.length - 1 === 0) {
+      document.querySelector('.empty').style.display = 'none';
+      document.getElementById('add-pokemon').disabled = false;
+    }
     newTeamModal.style.display = 'none';
     document.getElementById('team-name').value = '';
     addTeam(name);
@@ -259,6 +265,7 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
       appendNewPokèmon(teamName, json);
       document.getElementById('autoComplete').value = '';
       addPokemonModal.style.display = 'none';
+      document.querySelector('#autoComplete').setAttribute('placeholder', '');
     }
   }
 });
@@ -267,4 +274,9 @@ const deleteTeam = (team) => {
   localStorage.removeItem(team.split('-').join(' '));
   const deletedTeam = document.getElementById(team);
   deletedTeam.parentNode.removeChild(deletedTeam);
+  if (localStorage.length === 0) {
+    document.getElementById('team-container').insertAdjacentHTML('beforeend',
+      `<span class="empty">No teams added yet</span>`
+    );
+  }
 }
