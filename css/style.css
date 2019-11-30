@@ -79,7 +79,6 @@ img.sprite {
   width: 155px;
 }
 
-/****************** Team Builder ******************/
 
 div#add-pokemon {
   margin-top: 40px;
@@ -142,7 +141,13 @@ span.delete {
   float: right;
   right: 26px;
 }
-/****************** Modals ******************/
+
+span.delete-pkmn {
+  position: relative;
+  font-size: 40px;
+  left: 30px;
+}
+
 
 .modal {
   display: none;
@@ -239,7 +244,6 @@ div#footer a:hover {
   text-decoration: underline;
 }
 
-/****************** Mobile ******************/
 
 @media screen and (max-width: 768px) {
   .modal-content {
@@ -275,8 +279,6 @@ div#footer a:hover {
     margin-top: 20px;
   }
 }
-
-/****************** Animations ******************/
 
 
 @keyframes animatetop {

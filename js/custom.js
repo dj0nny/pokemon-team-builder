@@ -1,6 +1,3 @@
-// eliminare team e pokemon dai team
-// gestione user friendly degli errori
-
 const newTeamModal = document.getElementById('newTeamModal');
 const addPokemonModal = document.getElementById('addPokemon');
 
@@ -97,7 +94,8 @@ const initializePokemon = (index, team) => {
     team.forEach((element) => {
       document.getElementById(`${index}`).insertAdjacentHTML('beforeend',
         `
-          <div class="grid-x">
+          <div class="grid-x pokemon-${element.name}">
+            <span class="delete-pkmn" onclick="deletePokemon('${index}', '${element.name}')">&times;</span>
             <img src="${element.sprites.front_default}"  class="sprite" />
             <div class="cell medium-12">
               <div class="grid-container">
@@ -182,7 +180,8 @@ const updateTeamList = (teamName) => {
 const appendNewPokèmon = (teamIndex, pokèmon) => {
   document.getElementById(`${teamIndex}`).insertAdjacentHTML('beforeend', 
     `
-      <div class="grid-x">
+      <div class="grid-x pokemon-${pokèmon.name}">
+        <span class="delete-pkmn" onclick="deletePokemon('${teamIndex}', '${pokèmon.name})">&times;</span>
         <img src="${pokèmon.sprites.front_default}"  class="sprite" />
         <div class="cell medium-12">
           <div class="grid-container">
@@ -279,4 +278,12 @@ const deleteTeam = (team) => {
       `<span class="empty">No teams added yet</span>`
     );
   }
+}
+
+const deletePokemon = (teamName, pokemonName) => {
+  const team = JSON.parse(localStorage.getItem(teamName.split('-').join(' ')));
+  const filteredArray = team.filter(item => item.name != pokemonName);
+  localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(filteredArray));
+  const element = document.querySelector(`#${teamName} .pokemon-${pokemonName}`);
+  element.parentNode.removeChild(element);
 }
