@@ -18,10 +18,12 @@ addPokemonOpenBtn.addEventListener('click', () => {
 
 closeSpan.addEventListener('click', () => {
   newTeamModal.style.display = 'none';
+  document.getElementById('team-name').value = '';
 });
 
 closeSpan2.addEventListener('click', () => {
   addPokemonModal.style.display = 'none';
+  document.getElementById('autoComplete').value = '';
 });
 
 const autoCompletejs = new autoComplete({
@@ -95,8 +97,8 @@ const initializePokemon = (index, team) => {
       document.getElementById(`${index}`).insertAdjacentHTML('beforeend',
         `
           <div class="grid-x pokemon-${element.name}">
-            <span class="delete-pkmn" onclick="deletePokemon('${index}', '${element.name}')">&times;</span>
             <img src="${element.sprites.front_default}"  class="sprite" />
+            <span class="delete-pkmn" onclick="deletePokemon('${index}', '${element.name}')">&times;</span>
             <div class="cell medium-12">
               <div class="grid-container">
                 <div class="grid-x grid-margin-x">
@@ -160,6 +162,16 @@ const addTeam = (teamName) => {
   option.text = teamName.split('-').join(' ');
   option.value = teamName.split(' ').join('-');
   select.appendChild(option);
+}
+
+const isDuplicate = (teamName) => {
+  console.log(teamName);
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i) === teamName) {
+      return true;
+    }
+  }
+  return false;
 }
 
 const updateTeamList = (teamName) => {
@@ -234,15 +246,19 @@ document.getElementById('add-team').addEventListener('submit', (event) => {
   if (name === '' ) {
     alert("Team's name cannot be empty");
   } else {
-    localStorage.setItem(name, JSON.stringify([]));
-    if (localStorage.length - 1 === 0) {
-      document.querySelector('.empty').style.display = 'none';
-      document.getElementById('add-pokemon').disabled = false;
+    if (isDuplicate(name)) {
+      alert(`There is already a team named ${name}`);
+    } else {      
+      localStorage.setItem(name, JSON.stringify([]));
+      if (localStorage.length - 1 === 0) {
+        document.querySelector('.empty').style.display = 'none';
+        document.getElementById('add-pokemon').disabled = false;
+      }
+      newTeamModal.style.display = 'none';
+      document.getElementById('team-name').value = '';
+      addTeam(name);
+      updateTeamList(name);
     }
-    newTeamModal.style.display = 'none';
-    document.getElementById('team-name').value = '';
-    addTeam(name);
-    updateTeamList(name);
   }
 });
 

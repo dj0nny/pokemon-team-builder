@@ -145,9 +145,11 @@ span.delete {
 span.delete-pkmn {
   position: relative;
   font-size: 40px;
-  left: 30px;
+  display: block;
+  float: right;
+  right: 45px;
+  color: #ef5350;
 }
-
 
 .modal {
   display: none;
