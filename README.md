@@ -1,5 +1,7 @@
 # Pokemon Team Builder
 
+### [Live demo](https://pokemon-team-builder.netlify.com/)
+
 ## Project Description
 
 The purpose of this project is to develop a team builder for Pokèmon games.
