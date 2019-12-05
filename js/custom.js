@@ -193,8 +193,8 @@ const appendNewPokèmon = (teamIndex, pokèmon) => {
   document.getElementById(`${teamIndex}`).insertAdjacentHTML('beforeend', 
     `
       <div class="grid-x pokemon-${pokèmon.name}">
-        <span class="delete-pkmn" onclick="deletePokemon('${teamIndex}', '${pokèmon.name})">&times;</span>
         <img src="${pokèmon.sprites.front_default}"  class="sprite" />
+        <span class="delete-pkmn" onclick="deletePokemon('${teamIndex}', '${pokèmon.name})">&times;</span>
         <div class="cell medium-12">
           <div class="grid-container">
             <div class="grid-x grid-margin-x">
