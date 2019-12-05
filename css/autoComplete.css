@@ -11,8 +11,8 @@
   font-size: 1.2rem;
   outline: none;
   border-radius: 50rem;
-  border: 0.05rem solid #ef5350;
-  caret-color: rgb(255, 122, 122);
+  border: 0.05rem solid #794bc4;
+  caret-color: #794bc4;
   color: #263238;
   height: 41px;
 }
@@ -23,7 +23,7 @@
 
 #autoComplete:focus::selection {
   color: #fff;
-  background-color: rgba(255, 122, 122, 1);
+  background-color: #794bc4;
 }
 
 #autoComplete_list {
@@ -64,8 +64,8 @@
 
 .autoComplete_result:hover {
   cursor: pointer;
-  border-left: 2px solid rgba(255, 122, 122, 1);
-  border-right: 2px solid rgba(255, 122, 122, 1);
+  border-left: 2px solid #794bc4;
+  border-right: 2px solid #794bc4;
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }
@@ -73,13 +73,13 @@
 .autoComplete_result:focus {
   outline: none;
   background-color: rgba(255, 248, 248, 0.9);
-  border-left: 2px solid rgba(255, 122, 122, 1);
-  border-right: 2px solid rgba(255, 122, 122, 1);
+  border-left: 2px solid #794bc4;
+  border-right: 2px solid #794bc4;
 }
 
 .autoComplete_highlighted {
   opacity: 1;
-  color: rgba(255, 122, 122, 1);
+  color: #794bc4;
   font-weight: bold;
 }
 
@@ -91,8 +91,8 @@
 .autoComplete_selected {
   cursor: pointer;
   background-color: rgba(255, 248, 248, 0.9);
-  border-left: 2px solid rgba(255, 122, 122, 1);
-  border-right: 2px solid rgba(255, 122, 122, 1);
+  border-left: 2px solid #794bc4;
+  border-right: 2px solid #794bc4;
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
 }

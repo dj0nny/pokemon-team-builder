@@ -1,30 +1,62 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 body {
   text-align: center;
-  font-family: 'Montserrat';
-  background-color: #f9f9f9;
-  color: #263238;
+  background: #15202b;
+  color: #fff;
+  font-family: 'Montserrat'
+}
+
+.section h1 {
+  font-size: 4.2rem;
+  color: #794bc4;
+  font-weight: 400;
+  margin-bottom: 0
+}
+
+.section h5 {
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 1.0933333333rem 0 .656rem 0;
+  font-weight: 300
 }
 
 h3 {
-  margin: 0;
+  margin: 0
+}
+
+h1 a {
+  color: #fff;
+  text-decoration: none
+}
+
+i.material-icons {
+  font-size: 40px;
+  color: #794bc4
 }
 
 div#title {
   color: #fff;
-  background-color: #ef5350;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+  background-color: #794bc4;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .2)
 }
 
-div#description, div#links {
+div#description,
+div#links {
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
+}
+
+div#highlights {
+  margin-top: 40px
 }
 
 div#highlights h4 {
-  font-size: 20px;
-  color: #ef5350;
+  font-size: 27px;
+  color: #fff;
+  font-weight: 400
 }
 
 div#links a {
@@ -36,101 +68,100 @@ div#links a {
   font-size: 20px;
   transition: .3s all;
   color: #fff;
-  background: #ef5350;
-  border: 1px solid #ef5350;
+  background: #794bc4;
+  border: 1px solid #794bc4
 }
 
 div#links a:hover {
   text-decoration: underline;
-  background: transparent;
+  background: 0 0
 }
 
 div#links a:hover {
-  color: #ef5350;
+  color: #794bc4
 }
 
-div#links a[target="_blank"] {
+div#links a[target=_blank] {
   background: #2f2f2f;
-  border: 1px solid #2f2f2f;
+  border: 1px solid #2f2f2f
 }
 
-div#links a[target="_blank"]:hover {
+div#links a[target=_blank]:hover {
   color: #2f2f2f;
-  background: transparent;
+  background: 0 0
 }
 
 .info-list,
 .stats-list {
   margin-top: 20px;
-  margin-bottom: 21px;
+  margin-bottom: 21px
 }
 
 div#team-container h2 {
-  color: #ef5350;
+  color: #794bc4;
   font-size: 40px;
   border-bottom: 1px solid;
-  padding-bottom: 10px;
+  padding-bottom: 10px
 }
 
 img.sprite {
   display: block;
   margin: auto;
   margin-bottom: 10px;
-  width: 155px;
+  width: 155px
 }
 
-
 div#add-pokemon {
-  margin-top: 40px;
+  margin-top: 40px
 }
 
 input#pokemon-name {
   width: 300px;
-  margin-right: 20px;
+  margin-right: 20px
 }
 
 button#add-pokemon:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  opacity: .6;
+  cursor: not-allowed
 }
 
 button#submit-pkmn {
-  background: #ef5350;
+  background: #794bc4;
   padding: 10px 20px;
   color: #fff;
-  cursor: pointer;
+  cursor: pointer
 }
 
 span.empty {
   display: block;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700
 }
 
 div#controls {
-  margin: 50px 0;
+  margin: 50px 0
 }
 
 .primary {
-  width: 305px;
   padding: 10px 20px;
   text-decoration: none;
   font-size: 20px;
   transition: .3s all;
   color: #fff;
-  background: #ef5350;
-  border: 1px solid #ef5350;
+  background: #794bc4;
+  border: 1px solid #794bc4;
   cursor: pointer;
+  text-transform: uppercase;
+  width: 300px
 }
 
 .primary:focus {
-  border: 1px solid #ef5350;
+  border: 1px solid #794bc4
 }
 
 .primary:hover {
-  text-decoration: underline;
-  background: transparent;
-  color: #ef5350;
+  background: 0 0;
+  color: #fff
 }
 
 span.delete {
@@ -139,7 +170,7 @@ span.delete {
   cursor: pointer;
   display: block;
   float: right;
-  right: 26px;
+  right: 26px
 }
 
 span.delete-pkmn {
@@ -148,7 +179,8 @@ span.delete-pkmn {
   display: block;
   float: right;
   right: 45px;
-  color: #ef5350;
+  color: #794bc4;
+  cursor: pointer;
 }
 
 .modal {
@@ -160,131 +192,134 @@ span.delete-pkmn {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .4)
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #15202b;
   margin: 7% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #794bc4;
   width: 50%;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: .4s;
 }
 
-.close, .close-2 {
+.close,
+.close-2 {
   color: #aaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
   position: relative;
   bottom: 20px;
-  left: 5px;
+  left: 5px
 }
 
 .close:hover,
 .close:focus,
 .close-2:hover,
 .close-2:focus {
-  color: black;
+  color: #fff;
   text-decoration: none;
-  cursor: pointer;
+  cursor: pointer
 }
 
 input#team-name {
   width: 265px;
   margin-right: 18px;
   padding: 9px;
-  border: 1px solid #ef5350;
-  border-radius: 50px;
+  border: 1px solid #794bc4;
+  border-radius: 50px
 }
 
 input#pkmn-name {
-  width: 45%;
+  width: 45%
 }
 
 select#team-list {
   width: 45%;
   padding: 9px;
-  border: 1px solid #ef5350;
+  border: 1px solid #794bc4;
   border-radius: 50px;
-  margin-left: 15px;
+  margin-left: 15px
 }
 
 input#team-name:focus,
 select#team-list:focus {
-  outline-width: 0;
+  outline-width: 0
 }
 
 button#add-pkmn {
-  margin-top: 30px;
+  margin-top: 30px
 }
 
 span.info {
   display: block;
   text-transform: capitalize;
-  text-align: left;
+  text-align: left
 }
 
 div#footer {
   margin-top: 75px;
-  background: #ef5350;
+  background: #794bc4;
   color: #fff;
   padding: 35px;
-  font-size: 20px;
+  font-size: 20px
 }
 
 div#footer a {
   color: #fff;
-  font-weight: bold;
-  text-decoration: none;
+  font-weight: 700;
+  text-decoration: none
 }
 
 div#footer a:hover {
-  text-decoration: underline;
+  text-decoration: underline
 }
 
+img.icon {
+  width: 35px
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px) {
   .modal-content {
-    width: 100%;
+    width: 100%
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width:767px) {
   div#links .cell:first-child a {
-    margin-bottom: 10px;
+    margin-bottom: 10px
   }
-  
+
   #autoComplete {
-    width: 100%;
+    width: 100%
   }
 
   select#team-list {
     width: 100%;
-    margin-left: 0;
+    margin-left: 0
   }
 
   #autoComplete_list {
     width: 100%;
-    margin-left: 0;
+    margin-left: 0
   }
 
   span.info {
-    text-align: center;
+    text-align: center
   }
 
   .primary,
   select#team-list {
-    margin-top: 20px;
+    margin-top: 20px
   }
 }
 
-
 @keyframes animatetop {
-  from {
+  0% {
     top: -300px;
     opacity: 0
   }
