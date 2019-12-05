@@ -300,6 +300,9 @@ const deletePokemon = (teamName, pokemonName) => {
   const team = JSON.parse(localStorage.getItem(teamName.split('-').join(' ')));
   const filteredArray = team.filter(item => item.name != pokemonName);
   localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(filteredArray));
+  if (localStorage.length === 0) {
+    document.getElementById('add-pokemon').disabled = true;
+  }
   const element = document.querySelector(`#${teamName} .pokemon-${pokemonName}`);
   element.parentNode.removeChild(element);
 }
