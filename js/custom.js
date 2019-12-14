@@ -77,7 +77,6 @@ const autoCompletejs = new autoComplete({
     document.querySelector("#autoComplete").innerHTML = selection;
     document.querySelector("#autoComplete").setAttribute("placeholder", selection);
     document.querySelector("#autoComplete").value = "";
-    console.log(feedback);
   },
 });
 
@@ -131,7 +130,6 @@ const initializePokemon = (index, team) => {
         `
       )
     });
-    console.log(team);
   }
 }
 
@@ -165,7 +163,6 @@ const addTeam = (teamName) => {
 }
 
 const isDuplicate = (teamName) => {
-  console.log(teamName);
   for (let i = 0; i < localStorage.length; i++) {
     if (localStorage.key(i) === teamName) {
       return true;
