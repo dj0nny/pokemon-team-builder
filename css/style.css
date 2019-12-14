@@ -285,7 +285,8 @@ img.icon {
 
 @media screen and (max-width:768px) {
   .modal-content {
-    width: 100%
+    width: 100%;
+    margin: 50% auto;
   }
 }
 
