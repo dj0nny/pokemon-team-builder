@@ -29,7 +29,7 @@ closeSpan2.addEventListener('click', () => {
 const autoCompletejs = new autoComplete({
   data: {
     src: async function () {
-      const source = await fetch("../db/pokèmon.json");
+      const source = await fetch("../json/pokèmon.json");
       const data = await source.json();
       return data;
     },
