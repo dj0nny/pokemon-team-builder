@@ -191,7 +191,7 @@ const appendNewPokèmon = (teamIndex, pokèmon) => {
     `
       <div class="grid-x pokemon-${pokèmon.name}">
         <img src="${pokèmon.sprites.front_default}"  class="sprite" />
-        <span class="delete-pkmn" onclick="deletePokemon('${teamIndex}', '${pokèmon.name})">&times;</span>
+        <span class="delete-pkmn" onclick="deletePokemon('${teamIndex}', '${pokèmon.name}')">&times;</span>
         <div class="cell medium-12">
           <div class="grid-container">
             <div class="grid-x grid-margin-x">
