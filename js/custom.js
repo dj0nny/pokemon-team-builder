@@ -26,6 +26,19 @@ closeSpan2.addEventListener('click', () => {
   document.getElementById('autoComplete').value = '';
 });
 
+const sanitize = (string, char1, char2) => {
+  return string.split(char1).join(char2);
+}
+
+const isDuplicate = (teamName) => {
+  for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i) === teamName) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const autoCompletejs = new autoComplete({
   data: {
     src: async function () {
@@ -84,8 +97,8 @@ const initializeTeams = () => {
   const select = document.getElementById('team-list');
   for (let i = 0; i < localStorage.length; i++) {
     const option = document.createElement('option');
-    option.text = localStorage.key(i).split('-').join(' ');
-    option.value = localStorage.key(i).split(' ').join('-');
+    option.text = sanitize(localStorage.key(i), '-', ' ');
+    option.value = sanitize(localStorage.key(i), ' ', '-');
     select.appendChild(option);
   }
 }
@@ -136,7 +149,7 @@ const initializePokemon = (index, team) => {
 const initializeTeamList = () => {
   for (let i = 0; i < localStorage.length; i++) {
     const element = localStorage.key(i);
-    const teamID = element.split(' ').join('-');
+    const teamID = sanitize(element, ' ', '-');
     const currentTeam = JSON.parse(localStorage.getItem(element));
     document.getElementById('team-container').insertAdjacentHTML('beforeend',
       `
@@ -157,25 +170,16 @@ const initializeTeamList = () => {
 const addTeam = (teamName) => {
   const select = document.getElementById('team-list');
   const option = document.createElement('option');
-  option.text = teamName.split('-').join(' ');
-  option.value = teamName.split(' ').join('-');
+  option.text = sanitize(teamName, '-', ' ');
+  option.value = sanitize(teamName, ' ', '-');
   select.appendChild(option);
-}
-
-const isDuplicate = (teamName) => {
-  for (let i = 0; i < localStorage.length; i++) {
-    if (localStorage.key(i) === teamName) {
-      return true;
-    }
-  }
-  return false;
 }
 
 const updateTeamList = (teamName) => {
   document.getElementById('team-container').insertAdjacentHTML('beforeend',
     `
-      <div class="grid-container" id="${teamName.split(' ').join('-')}">
-        <span class="delete" onclick="deleteTeam('${teamName.split(' ').join('-')}')">&times;</span>
+      <div class="grid-container" id="${sanitize(teamName, ' ', '-')}">
+        <span class="delete" onclick="deleteTeam('${sanitize(teamName, ' ', '-')}')">&times;</span>
         <div class="grid-x">
           <div class="cell medium-12">
             <h2>${teamName}</h2>
@@ -266,14 +270,14 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
   if (pkmn === '') {
     alert('Pokèmon name cannot be empty');
   } else {
-    const selectedTeam = JSON.parse(localStorage.getItem(teamName.split('-').join(' ')));
+    const selectedTeam = JSON.parse(localStorage.getItem(sanitize(teamName, '-', ' ')));
     if (selectedTeam.length === 6) {
       alert('You have 6 pokemon in your team');
     } else {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pkmn}`);
       const json = await response.json();
       selectedTeam.push(json);
-      localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(selectedTeam));
+      localStorage.setItem(sanitize(teamName, '-', ' '), JSON.stringify(selectedTeam));
       appendNewPokèmon(teamName, json);
       document.getElementById('autoComplete').value = '';
       addPokemonModal.style.display = 'none';
@@ -283,7 +287,7 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
 });
 
 const deleteTeam = (team) => {
-  localStorage.removeItem(team.split('-').join(' '));
+  localStorage.removeItem(sanitize(team, '-', ' '));
   const deletedTeam = document.getElementById(team);
   deletedTeam.parentNode.removeChild(deletedTeam);
   if (localStorage.length === 0) {
@@ -295,9 +299,9 @@ const deleteTeam = (team) => {
 }
 
 const deletePokemon = (teamName, pokemonName) => {
-  const team = JSON.parse(localStorage.getItem(teamName.split('-').join(' ')));
+  const team = JSON.parse(localStorage.getItem(sanitize(teamName, '-', ' ')));
   const filteredArray = team.filter(item => item.name != pokemonName);
-  localStorage.setItem(teamName.split('-').join(' '), JSON.stringify(filteredArray));
+  localStorage.setItem(sanitize(teamName, '-', ' '), JSON.stringify(filteredArray));
   const element = document.querySelector(`#${teamName} .pokemon-${pokemonName}`);
   element.parentNode.removeChild(element);
 }
