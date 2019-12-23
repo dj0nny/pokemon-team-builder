@@ -9,14 +9,14 @@ body {
   font-family: 'Montserrat'
 }
 
-.section h1 {
+#intro-section h1 {
   font-size: 4.2rem;
   color: #794bc4;
   font-weight: 400;
   margin-bottom: 0
 }
 
-.section h5 {
+#intro-section h5 {
   font-size: 1.64rem;
   line-height: 110%;
   margin: 1.0933333333rem 0 .656rem 0;
