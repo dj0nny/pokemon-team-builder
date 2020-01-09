@@ -2,6 +2,17 @@
 
 ### [Live demo](https://pokemon-team-builder.netlify.com/)
 
+## Project setup
+
+Clone the repository using __Git__:
+```bash
+git clone https://github.com/dj0nny/pokemon-team-builder.git
+```
+
+Or [download the .zip folder](https://github.com/dj0nny/pokemon-team-builder/archive/master.zip).
+
+For running the project, open the `index.html` (if you are using VS Code, you can install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension).
+
 ## Project Description
 
 The purpose of this project is to develop a team builder for Pokèmon games.
