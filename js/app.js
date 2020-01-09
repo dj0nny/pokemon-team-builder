@@ -214,7 +214,7 @@ document.getElementById('add-new-pokemon').addEventListener('submit', async (eve
   const pkmn = document.getElementById('autoComplete').textContent.toLowerCase();
   const teamName = document.getElementById('team-list').value;
   if (pkmn === '') {
-    alert('Pokèmon name cannot be empty');
+    alert('Invalid Pokèmon name');
   } else {
     const selectedTeam = JSON.parse(localStorage.getItem(sanitize(teamName, '-', ' ')));
     if (selectedTeam.length === 6) {
